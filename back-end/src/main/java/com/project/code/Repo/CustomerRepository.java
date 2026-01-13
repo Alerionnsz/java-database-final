@@ -1,7 +1,3 @@
-package com.project.code.Repo;
-
-
-public interface CustomerRepository {
 // 1. Add the repository interface:
 //    - Extend JpaRepository<Customer, Long> to inherit basic CRUD functionality.
 //    - This allows the repository to perform operations like save, delete, update, and find without having to implement these methods manually.
@@ -32,8 +28,15 @@ public interface CustomerRepository {
 //    - Mark the interface with @Repository to indicate that it's a Spring Data JPA repository.
 //    - This annotation is optional if you extend JpaRepository, as Spring Data automatically registers the repository, but it's good practice to add it for clarity.
 
+package com.project.code.Repo;
 
-    
+import com.project.code.Model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+
+    Customer findByEmail(String email);
+
+    Customer findByid(Long id);
 }
-
 
